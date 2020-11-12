@@ -52,7 +52,8 @@ defmodule Ledger.MixProject do
       {:commanded_ecto_projections, "~> 1.2"},
       {:libcluster, "~> 3.2"},
       {:elixir_uuid, "~> 1.2"},
-      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false}
+      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:httpoison, "~> 1.7"}
     ]
   end
 

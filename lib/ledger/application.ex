@@ -22,7 +22,8 @@ defmodule Ledger.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Ledger.PubSub},
       # Start the Endpoint (http/https)
-      LedgerWeb.Endpoint
+      LedgerWeb.Endpoint,
+      Ledger.CommandedApp
       # Start a worker by calling: Ledger.Worker.start_link(arg)
       # {Ledger.Worker, arg}
     ]
