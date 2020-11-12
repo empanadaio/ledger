@@ -50,6 +50,7 @@ let
     selenium-server-standalone
     firefox
     geckodriver
+    nginx
   ];
 
   inputs = basePackages
