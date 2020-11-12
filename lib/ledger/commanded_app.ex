@@ -4,9 +4,8 @@ defmodule Ledger.CommandedApp do
     event_store: [
       adapter: Commanded.EventStore.Adapters.EventStore,
       event_store: Ledger.EventStore
-    ]
-
-  # ,registry: :global
+    ],
+    registry: :global
 
   router(Ledger.Router)
 end
