@@ -1,0 +1,15 @@
+version: "3.3"
+
+volumes:
+  pgdata:
+
+services:
+  db:
+    image: postgres:13
+    container_name: ledger_db
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5410:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
