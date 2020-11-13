@@ -34,3 +34,7 @@ npm-debug.log
 /priv/static/
 .nix-mix
 .nix-hex
+
+nginx/logs/*
+nginx/nginx.pid
+nginx/active_upstream.conf
