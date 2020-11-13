@@ -3,8 +3,10 @@ defmodule Ledger.Topic do
 
   def execute(_topic, command) do
     %Ledger.LoggedIt{
-      topic_id: command.topic_id,
-      message: command.message
+      topic: command.topic,
+      message: command.message,
+      received_by_pid: inspect(self()),
+      received_by_node: Node.self()
     }
   end
 

@@ -1,1 +1,5 @@
-iex -S mix run -e "Ledger.FakeClient.start_link()"
+#!/usr/bin/env bash
+
+set -e
+
+iex -S mix run -e "Ledger.FakeClient.start_link(\"$1\")"

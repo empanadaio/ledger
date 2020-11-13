@@ -1,29 +1,37 @@
 defmodule Ledger.FakeClient do
   use GenServer
 
+  @topics [
+    "bread",
+    "figs",
+    "butter",
+    "carrots",
+    "kimchi"
+  ]
+
   defmodule State do
-    defstruct next_id: 1, responses: []
+    defstruct host: nil, next_id: 1, responses: []
   end
 
   defmodule HappyResponse do
-    defstruct [:id, :from, :node]
+    defstruct [:id, :response]
   end
 
   defmodule SadResponse do
     defstruct [:id, :error]
   end
 
-  def start_link(_args \\ []) do
-    GenServer.start_link(__MODULE__, %State{})
+  def start_link(host \\ "http://localhost:4000") do
+    GenServer.start_link(__MODULE__, %State{host: host})
   end
 
   @impl true
   def init(state) do
-    {:ok, state, {:continue, :do_it}}
+    {:ok, state, {:continue, :start_refreshing}}
   end
 
   @impl true
-  def handle_continue(:do_it, state) do
+  def handle_continue(:start_refreshing, state) do
     {:noreply, refresh(state)}
   end
 
@@ -33,11 +41,14 @@ defmodule Ledger.FakeClient do
   end
 
   defp refresh(state) do
-    url = "https://bitfield.ngrok.io/api/log_it"
+    url = "#{state.host}/api/log_it"
+
+    message_id = state.next_id
 
     body =
       %{
-        id: state.next_id
+        topic: @topics |> Enum.random(),
+        message: "Message #{message_id}"
       }
       |> Jason.encode!()
 
@@ -47,20 +58,19 @@ defmodule Ledger.FakeClient do
           json = Jason.decode!(body)
 
           %HappyResponse{
-            id: state.next_id,
-            from: json["self"],
-            node: json["node"]
+            id: message_id,
+            response: json
           }
 
         {:ok, %{status_code: code}} ->
           %SadResponse{
-            id: state.next_id,
+            id: message_id,
             error: "Bad status: #{code}"
           }
 
         {:error, reason} ->
           %SadResponse{
-            id: state.next_id,
+            id: message_id,
             error: reason
           }
       end
@@ -68,7 +78,7 @@ defmodule Ledger.FakeClient do
 
     new_state =
       state
-      |> Map.put(:next_id, state.next_id + 1)
+      |> Map.put(:next_id, message_id + 1)
       |> Map.put(:responses, [response | state.responses])
 
     Process.send_after(self(), :do_something, 5000)

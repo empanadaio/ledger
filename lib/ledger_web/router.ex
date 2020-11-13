@@ -17,6 +17,7 @@ defmodule LedgerWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/messages", PageController, :messages
   end
 
   scope "/api", LedgerWeb do

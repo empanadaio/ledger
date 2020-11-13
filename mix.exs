@@ -53,7 +53,8 @@ defmodule Ledger.MixProject do
       {:libcluster, "~> 3.2"},
       {:elixir_uuid, "~> 1.2"},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:httpoison, "~> 1.7"}
+      {:httpoison, "~> 1.7"},
+      {:phoenix_pubsub, "~> 2.0"}
     ]
   end
 

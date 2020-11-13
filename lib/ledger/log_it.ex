@@ -1,3 +1,3 @@
 defmodule Ledger.LogIt do
-  defstruct [:topic_id, :message]
+  defstruct [:topic, :message]
 end

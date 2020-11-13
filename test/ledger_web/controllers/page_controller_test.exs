@@ -7,7 +7,7 @@ defmodule LedgerWeb.PageControllerTest do
   end
 
   test "Log it", %{conn: conn} do
-    topic_id = UUID.uuid4()
-    _conn = post(conn, "/api/log_it", %{topic_id: topic_id, message: 1})
+    topic = UUID.uuid4()
+    _conn = post(conn, "/api/log_it", %{topic: topic, message: 1})
   end
 end

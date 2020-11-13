@@ -35,7 +35,7 @@ defmodule Ledger.Storage do
     """
     TRUNCATE TABLE
       projection_versions,
-      retailer_affinities
+      handled_messages
     RESTART IDENTITY;
     """
   end

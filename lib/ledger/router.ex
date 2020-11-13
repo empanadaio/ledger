@@ -3,6 +3,6 @@ defmodule Ledger.Router do
 
   dispatch(Ledger.LogIt,
     to: Ledger.Topic,
-    identity: :topic_id
+    identity: :topic
   )
 end
