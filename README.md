@@ -1,6 +1,9 @@
 # Ledger
 
 ```sh
+# start nginx
+script/run_nginx.sh
+
 # start server 'a'
 PORT=4001 script/server a
 
