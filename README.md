@@ -1,5 +1,7 @@
 # Ledger
 
+A sample [Elixir Phoenix](https://www.phoenixframework.org/) + [Commanded app](https://github.com/commanded/commanded) app to showcase zero-downtime upgrades in a clustered setup.
+
 ```sh
 # start nginx
 script/run_nginx.sh
