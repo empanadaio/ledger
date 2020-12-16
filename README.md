@@ -4,12 +4,12 @@
 # start nginx
 script/run_nginx.sh
 
-# start server 'a'
-PORT=4001 script/server a
+# start the blue server
+PORT=4001 script/server blue
 
-# start server 'b'
-PORT=4002 script/server b
+# start the green server
+PORT=4002 script/server green
 
-# start pinging b
-script/pinger http://localhost:4002
+# start pinging nginx
+script/pinger http://localhost:4000
 ```

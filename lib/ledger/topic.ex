@@ -5,6 +5,8 @@ defmodule Ledger.Topic do
     %Ledger.LoggedIt{
       topic: command.topic,
       message: command.message,
+      ctrl_pid: command.ctrl_pid,
+      ctrl_node: command.ctrl_node,
       received_by_pid: inspect(self()),
       received_by_node: Node.self()
     }

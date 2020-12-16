@@ -1,11 +1,19 @@
 <table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Message</th>
+      <th>Controller</th>
+      <th>Aggregate</th>
+      <th>Projector</th>
+    </tr>
+  </thead>
   <%= for message <- @messages do %>
     <tr>
       <td><%= message.topic %></td>
       <td><%= message.message %></td>
-      <td><%= message.received_by_pid %></td>
+      <td><%= message.ctrl_node %></td>
       <td><%= message.received_by_node %></td>
-      <td><%= message.handled_by_pid %></td>
       <td><%= message.handled_by_node %></td>
     </tr>
   <% end %>

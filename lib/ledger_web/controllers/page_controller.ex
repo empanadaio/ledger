@@ -11,7 +11,14 @@ defmodule LedgerWeb.PageController do
   end
 
   def log_it(conn, %{"topic" => topic, "message" => message}) do
-    command = %LogIt{topic: topic, message: message}
+    command = %LogIt{
+      topic: topic,
+      message: message,
+      ctrl_pid: inspect(self()),
+      ctrl_node: Node.self()
+    }
+
+    # TODO: figure out how to retry
     :ok = CommandedApp.dispatch(command)
 
     conn

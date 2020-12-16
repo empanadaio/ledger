@@ -11,6 +11,8 @@ defmodule Ledger.HandledMessage do
     field :handled_by_pid, :string
     field :received_by_node, :string
     field :received_by_pid, :string
+    field :ctrl_node, :string
+    field :ctrl_pid, :string
 
     timestamps()
   end
@@ -23,6 +25,8 @@ defmodule Ledger.HandledMessage do
       :received_by_node,
       :handled_by_pid,
       :handled_by_node,
+      :ctrl_pid,
+      :ctrl_node,
       :message
     ])
     |> validate_required([
@@ -30,6 +34,8 @@ defmodule Ledger.HandledMessage do
       :received_by_node,
       :handled_by_pid,
       :handled_by_node,
+      :ctrl_pid,
+      :ctrl_node,
       :message
     ])
   end

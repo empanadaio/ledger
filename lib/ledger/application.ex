@@ -9,7 +9,7 @@ defmodule Ledger.Application do
     topologies = [
       example: [
         strategy: Cluster.Strategy.Epmd,
-        config: [hosts: [:"a@127.0.0.1", :"b@127.0.0.1"]]
+        config: [hosts: [:"blue@127.0.0.1", :"green@127.0.0.1"]]
       ]
     ]
 

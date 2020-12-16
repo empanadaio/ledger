@@ -4,6 +4,8 @@ defmodule Ledger.LoggedIt do
     :topic,
     :message,
     :received_by_pid,
-    :received_by_node
+    :received_by_node,
+    :ctrl_pid,
+    :ctrl_node
   ]
 end

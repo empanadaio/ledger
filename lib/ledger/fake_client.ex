@@ -3,10 +3,7 @@ defmodule Ledger.FakeClient do
 
   @topics [
     "bread",
-    "figs",
-    "butter",
-    "carrots",
-    "kimchi"
+    "figs"
   ]
 
   defmodule State do
@@ -81,7 +78,7 @@ defmodule Ledger.FakeClient do
       |> Map.put(:next_id, message_id + 1)
       |> Map.put(:responses, [response | state.responses])
 
-    Process.send_after(self(), :do_something, 5000)
+    Process.send_after(self(), :do_something, 100)
     new_state
   end
 end
