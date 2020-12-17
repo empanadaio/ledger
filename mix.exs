@@ -50,6 +50,7 @@ defmodule Ledger.MixProject do
       {:commanded, "~> 1.2"},
       {:commanded_eventstore_adapter, "~> 1.2"},
       {:commanded_ecto_projections, "~> 1.2"},
+      {:eventstore, "~> 1.2"},
       {:libcluster, "~> 3.2"},
       {:elixir_uuid, "~> 1.2"},
       {:httpoison, "~> 1.7"},
