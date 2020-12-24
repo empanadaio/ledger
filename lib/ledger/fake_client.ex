@@ -2,8 +2,8 @@ defmodule Ledger.FakeClient do
   use GenServer
 
   @topics [
-    "bread",
-    "figs"
+    "bread"
+    # "figs"
   ]
 
   defmodule State do

@@ -19,7 +19,14 @@ defmodule LedgerWeb.PageController do
     }
 
     # TODO: figure out how to retry
-    :ok = CommandedApp.dispatch(command)
+    case CommandedApp.dispatch(command) do
+      :ok ->
+        :ok
+
+      {:error, :remote_aggregate_not_found} ->
+        IO.inspect("RETRY")
+        CommandedApp.dispatch(command)
+    end
 
     conn
     |> json(%{
@@ -31,9 +38,7 @@ defmodule LedgerWeb.PageController do
   end
 
   def messages(conn, _params) do
-    query =
-      Ledger.HandledMessage
-      |> order_by(desc: :inserted_at)
+    query = Ledger.HandledMessage
 
     messages = Repo.all(query)
 
