@@ -18,15 +18,7 @@ defmodule LedgerWeb.PageController do
       ctrl_node: Node.self()
     }
 
-    # TODO: figure out how to retry
-    case CommandedApp.dispatch(command) do
-      :ok ->
-        :ok
-
-      {:error, :remote_aggregate_not_found} ->
-        IO.inspect("RETRY")
-        CommandedApp.dispatch(command)
-    end
+    :ok = CommandedApp.dispatch(command)
 
     conn
     |> json(%{
